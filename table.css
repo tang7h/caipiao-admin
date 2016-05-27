@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #eee;
+  /*color: rgba(0,0,0,.87);*/
+  font-family: "microsoft yahei";
+}
+h1 {
+  font-size: 20px;
+  font-weight: 500;
+}
+.card {
+  box-shadow: 0 2px 8px rgba(0,0,0,.12), 0 4px 16px rgba(0,0,0,.12);
+}
+.table {
+  min-width: 800px;
+  max-width: 1000px;
+  margin: 56px;
+  border-radius: 2px;
+  border: 1px solid rgba(0,0,0,.12);
+  background: #fff;
+}
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.row.header {
+  height: 64px;
+  padding: 0 24px;
+}
+.row.footer {
+  height: 56px;
+}
+.name {
+  height: 56px;
+  border-bottom: 1px solid rgba(0,0,0,.12);
+  font-size: 12px;
+  color: rgba(0,0,0,.54);
+}
+.cell {
+  height: 48px;
+  border-bottom: 1px solid rgba(0,0,0,.12);
+  font-size: 13px;
+}
+.cell {
+  flex: 1 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  white-space: nowrap;
+  padding-right: 56px;
+  /*background: #eee;*/
+}
+.col {
+  flex: 1;
+}
+.col:first-child .cell {
+  padding-left: 24px;
+}
+.col:last-child .cell {
+  padding-right: 24px;
+}
+
+.table2 .cell:first-child {
+  padding-left: 24px;
+}
+.table2 .cell {
+  flex: 2;
+}
+.table2 .cell.addr {
+  flex: 5;
+}
+.table2 .cell.id {
+  flex: 1;
+}
+.data.row:hover {
+  background: #eee;
+}

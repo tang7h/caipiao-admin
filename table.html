@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh" ng-app="caipiao-admin" ng-controller="appCtrl">
+<head>
+  <meta charset="UTF-8">
+  <title>material table</title>
+  <link rel="stylesheet" href="table.css">
+  <script src="angular.min.js"></script>
+  <script src="fucai-user-data.js"></script>
+</head>
+<body>
+  <div class="table">
+    <div class="row header">
+      <h1>福彩用户</h1>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="cell name">ID</div>
+        <div class="cell data" ng-repeat="i in userData">{{i.id}}</div></div>
+      <div class="col">
+        <div class="cell name">用户名</div>
+        <div class="cell data" ng-repeat="i in userData">{{i.username}}</div></div>
+      <div class="col">
+        <div class="cell name">密码</div>
+        <div class="cell data" ng-repeat="i in userData">{{i.passcode}}</div></div>
+      <div class="col">
+        <div class="cell name">电话</div>
+        <div class="cell data" ng-repeat="i in userData">{{i.Tell}}</div></div>
+      <div class="col">
+        <div class="cell name">电视型号</div>
+        <div class="cell data" ng-repeat="i in userData">{{i.info}}</div></div>
+      <div class="col">
+        <div class="cell name">地址</div>
+        <div class="cell data" ng-repeat="i in userData">{{i.Add}}</div></div>
+      <div class="col">
+        <div class="cell name">安装时间</div>
+        <div class="cell data" ng-repeat="i in userData">{{i.shijian}}</div></div>
+    </div>
+    <div class="row footer">
+    </div>
+  </div>
+
+  <div class="table table2">
+    <div class="row header">
+      <h1>福彩用户</h1>
+    </div>
+    <div class="row">
+      <div class="cell id">ID</div>
+      <div class="cell name">用户名</div>
+      <div class="cell name">密码</div>
+      <div class="cell name">电话</div>
+      <div class="cell name">电视型号</div>
+      <div class="cell addr">地址</div>
+      <div class="cell name">安装时间</div>
+    </div>
+    <div class="row data" ng-repeat="i in userData">
+        <div class="cell id" >{{i.id}}</div>
+        <div class="cell">{{i.username}}</div>
+        <div class="cell">{{i.passcode}}</div>
+        <div class="cell">{{i.Tell}}</div>
+        <div class="cell">{{i.info}}</div>
+        <div class="cell addr">{{i.Add}}</div>
+        <div class="cell">{{i.shijian}}</div>
+    </div>
+    <div class="row footer">
+    </div>
+  </div>
+
+</body>
+</html>
