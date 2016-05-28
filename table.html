@@ -8,62 +8,117 @@
   <script src="fucai-user-data.js"></script>
 </head>
 <body>
-  <div class="table">
-    <div class="row header">
-      <h1>福彩用户</h1>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="cell name">ID</div>
-        <div class="cell data" ng-repeat="i in userData">{{i.id}}</div></div>
-      <div class="col">
-        <div class="cell name">用户名</div>
-        <div class="cell data" ng-repeat="i in userData">{{i.username}}</div></div>
-      <div class="col">
-        <div class="cell name">密码</div>
-        <div class="cell data" ng-repeat="i in userData">{{i.passcode}}</div></div>
-      <div class="col">
-        <div class="cell name">电话</div>
-        <div class="cell data" ng-repeat="i in userData">{{i.Tell}}</div></div>
-      <div class="col">
-        <div class="cell name">电视型号</div>
-        <div class="cell data" ng-repeat="i in userData">{{i.info}}</div></div>
-      <div class="col">
-        <div class="cell name">地址</div>
-        <div class="cell data" ng-repeat="i in userData">{{i.Add}}</div></div>
-      <div class="col">
-        <div class="cell name">安装时间</div>
-        <div class="cell data" ng-repeat="i in userData">{{i.shijian}}</div></div>
-    </div>
-    <div class="row footer">
-    </div>
-  </div>
-
-  <div class="table table2">
-    <div class="row header">
-      <h1>福彩用户</h1>
-    </div>
-    <div class="row">
-      <div class="cell id">ID</div>
-      <div class="cell name">用户名</div>
-      <div class="cell name">密码</div>
-      <div class="cell name">电话</div>
-      <div class="cell name">电视型号</div>
-      <div class="cell addr">地址</div>
-      <div class="cell name">安装时间</div>
-    </div>
-    <div class="row data" ng-repeat="i in userData">
-        <div class="cell id" >{{i.id}}</div>
-        <div class="cell">{{i.username}}</div>
-        <div class="cell">{{i.passcode}}</div>
-        <div class="cell">{{i.Tell}}</div>
-        <div class="cell">{{i.info}}</div>
+  <div class="stage">
+    <div class="page table" id="page-fucai">
+      <div class="row header">
+        <h1>福彩用户</h1>
+        <div class="tools">
+          <svg class="icon" ng-click="dialogue.toggle()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          <input type="text" ng-model="search">
+        </div>
+      </div>
+      <div class="row">
+        <div class="cell name id">ID</div>
+        <div class="cell name username">用户名</div>
+        <div class="cell name password">密码</div>
+        <div class="cell name tel">电话</div>
+        <div class="cell name device">电视型号</div>
+        <div class="cell name addr">地址</div>
+        <div class="cell name time">安装时间</div>
+        <div class="cell edit"></div>
+      </div>
+      <div class="row data" ng-repeat="i in userData | filter:search">
+        <div class="cell id">{{i.id}}</div>
+        <div class="cell username">{{i.username}}</div>
+        <div class="cell password">{{i.passcode}}</div>
+        <div class="cell tel">{{i.Tell}}</div>
+        <div class="cell device">{{i.info}}</div>
         <div class="cell addr">{{i.Add}}</div>
-        <div class="cell">{{i.shijian}}</div>
+        <div class="cell time">{{i.shijian}}</div>
+        <div class="cell edit">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+        </div>
+      </div>
+      <div class="row footer">
+      </div>
+
     </div>
-    <div class="row footer">
+    <!-- 设置 -->
+    <div class="page setting" id="page-setting" spellcheck="false">
+      <div class="subheader">基本设置</div>
+      <div class="group">
+        <div class="setting-item">
+          <div class="item-name"> 开奖倒计时 </div>
+          <input type="number" value="{{settingData.next}}">
+        </div>
+        <div class="setting-item">
+          <div class="item-name"> 推介号 </div>
+          <input type="text" value="{{settingData.recommond}}">
+        </div>
+        <div class="setting-item">
+          <div class="item-name"> 倍数 </div>
+          <input type="number" value="{{settingData.times}}">
+        </div>
+      </div>
+      <div class="subheader">颜色</div>
+      <div class="group">
+        <div class="setting-item">
+          <div class="item-name"> 连号 </div>
+          <div class="palette" style="background:{{settingData.lianhao}}"></div>
+          <input type="text" value="{{settingData.lianhao}}">
+        </div>
+        <div class="setting-item">
+          <div class="item-name"> 连开 </div>
+          <div class="palette" style="background:{{settingData.liankai}}"></div>
+          <input type="text" value="{{settingData.liankai}}">
+        </div>
+        <div class="setting-item">
+          <div class="item-name"> 全单 </div>
+          <div class="palette" style="background:{{settingData.quandan}}"></div>
+          <input type="text" value="{{settingData.quandan}}">
+        </div>
+        <div class="setting-item">
+          <div class="item-name"> 全双 </div>
+          <div class="palette" style="background:{{settingData.quanshuang}}"></div>
+          <input type="text" value="{{settingData.quanshuang}}">
+        </div>
+        <div class="setting-item">
+          <div class="item-name"> 背景色 </div>
+          <div class="palette" style="background:{{settingData.col_bg}}"></div>
+          <input type="text" value="{{settingData.col_bg}}">
+        </div>
+      </div>
     </div>
   </div>
 
+  <div class="dialogue {{dialogue.status}}">
+    <div class="card">
+      <div class="title">添加用户</div>
+      <div class="content">
+        <div class="input-area"><input type="text" name="name" placeholder="用户名" autocomplete="off"><div class="line"></div></div>
+        <div class="input-area"><input type="text" name="name" placeholder="密码" autocomplete="off"><div class="line"></div></div>
+        <div class="input-area"><input type="text" name="name" placeholder="电话"><div class="line"></div></div>
+        <div class="input-area"><input type="text" name="name" placeholder="电视型号"><div class="line"></div></div>
+        <div class="input-area"><input type="text" name="name" placeholder="地址"><div class="line"></div></div>
+        <div class="input-area"><input type="date" name="name" placeholder="安装时间"><div class="line"></div></div>
+      </div>
+      <div class="action">
+        <button class="btn" ng-click="dialogue.toggle()">取消</button>
+        <input class="btn" type="submit" value="添加">
+      </div>
+
+    </div>
+  </div>
+
+<div class="side-nav">
+  <div class="nav-item-group">
+    <a href="#page-fucai" class="nav-item active">福彩</a>
+    <a href="#page-ticai" class="nav-item">体彩</a>
+  </div>
+  <div class="nav-item-group">
+    <a href="#page-setting" class="nav-item">设置</a>
+  </div>
+</div>
 </body>
 </html>
