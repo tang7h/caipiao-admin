@@ -56,15 +56,48 @@ app.controller('appCtrl', function($scope){
       shijian: "2015年9月15日"
     }
   ]
+  $scope.dataT = {};
+  $scope.time = new Date();
+  $scope.edit = function(data) {
+    $scope.dataT = data;
+    console.log(data);
+    $scope.bar.show();
+  }
   $scope.dialogue = {
     status: 'hide',
+    show: function(){
+      this.status = 'show';
+    },
+    hide: function(){
+      this.status = 'hide';
+    },
     toggle: function(){
       if(this.status=='show'){
-        this.status = 'hide';
+        this.hide();
       } else {
-        this.status = 'show';
+        this.show();
       }
     }
+  }
+  $scope.bar = {
+    status: 'hide',
+    show: function(){
+      this.status = 'show';
+    },
+    hide: function(){
+      this.status = 'hide';
+    },
+    toggle: function(){
+      if(this.status=='show'){
+        this.hide();
+      } else {
+        this.show();
+      }
+    }
+  }
+  $scope.editComplete = function(){
+    $scope.bar.hide();
+    // 提交编辑后的数据
   }
   $scope.settingData = {
     next: 600,

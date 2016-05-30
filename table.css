@@ -16,11 +16,22 @@ a {
   text-decoration: none;
 }
 input {
-  color: inherit;
+  font-family: inherit;
+  font-size: 14px;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,.12);
+  padding: 4px 0 4px;
+  background: transparent;
+  outline: none;
+}
+input:focus {
+  border-bottom: 2px solid #2196f3;
+  padding-bottom: 3px;
 }
 h1 {
   font-size: 20px;
   font-weight: 500;
+  flex: 1 1 100%;
 }
 svg {
   fill: currentcolor;
@@ -39,11 +50,20 @@ svg {
   font-weight: bold;
   color: #2196F3;
   cursor: pointer;
+  border-radius: 2px;
+}
+.btn-primary {
+  background: #2196F3;
+  color: #fff;
+  font-weight: 500;
 }
 .icon {
   color: rgba(0,0,0,.54);
+  color: #2196F3;
   cursor: pointer;
 }
+.md-dark { color: rgba(0, 0, 0, 0.54); }
+.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
 .stage {
   flex: 1 0 1100px;
   order: 1;
@@ -52,23 +72,27 @@ svg {
 }
 .page {
   margin: 56px;
+  min-width: 1100px;
+  border-radius: 2px;
 }
 .page.table {
-  width: 1100px;
-  border-radius: 2px;
   border: 1px solid rgba(0,0,0,.12);
   background: #fff;
 }
 .page.setting {
-
+  display: flex;
+  align-items: flex-start;
 }
 .row {
+  flex: 1 0 100%;
   display: flex;
   align-items: center;
   padding: 0 24px;
 }
 .row.data {
+  height: 48px;
   border-bottom: 1px solid rgba(0,0,0,.12);
+  transform: translateY(-100%);
 }
 .row.data:hover {
   background: #eee;
@@ -80,6 +104,8 @@ svg {
 }
 .row.footer {
   height: 56px;
+  display: flex;
+  justify-content: flex-end;
 }
 .name {
   height: 56px;
@@ -87,11 +113,8 @@ svg {
   color: rgba(0,0,0,.54);
 }
 .cell {
-  height: 48px;
   font-size: 13px;
   cursor: default;
-}
-.cell {
   flex: 2 0;
   overflow: hidden;
   display: flex;
@@ -113,13 +136,45 @@ svg {
 .cell.time { flex: 1 0 7em;}
 .cell.edit { flex: 1 0 24px;}
 
+.edit .icon { opacity: 0;}
+.row:hover .icon { opacity: 1;}
+
+
+input.cell {
+  border: none;
+}
+/*编辑数据*/
+.bar {
+  box-shadow: 0 0px 30px rgba(0,0,0,.2);
+  position: relative;
+  z-index: 6;
+  transition: box-shadow .2s;
+}
+.bar,
+.row.bar:hover {
+  background: #fff;
+}
+.bar.hide {
+  visibility: hidden;
+  box-shadow: 0 0px 30px rgba(0,0,0,0);
+}
+.bar input {
+  flex: 1 0 100%;
+  font-size: 13px;
+}
+.bar .icon {
+  opacity: 1;
+}
+
+
 /*工具栏*/
 .tools {
   display: flex;
+  align-items: center;
   color: rgba(0, 0, 0, 0.54);
 }
 .tools .icon {
-  margin-left: 24px;
+  margin-right: 24px;
 }
 
 /*添加条目*/
@@ -162,12 +217,15 @@ input:focus+.line {
   justify-content: center;
   align-items: center;
   background: rgba(0,0,0,.54);
+  transition: opacity .2s;
 }
 .dislogue.show {
 
 }
 .dialogue.hide {
-  display: none;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity .2s, transform 0s .2s;
 }
 .dialogue .card {
   position: fixed;
@@ -176,6 +234,10 @@ input:focus+.line {
   border-radius: 2px;
   background: #fff;
   box-shadow: 0 4px 16px rgba(0,0,0,.12);
+  transition: transform .2s;
+}
+.dialogue.hide .card {
+  transform: scale(.9);
 }
 .dialogue .title {
   margin: 24px;
@@ -192,7 +254,8 @@ input:focus+.line {
 /*导航*/
 .side-nav {
   flex: 0 0 280px;
-  background: #fff;
+  background: #333;
+  color: #fff;
   height: 100vh;
   border-right: 1px solid rgba(0,0,0,.12)
 }
@@ -213,40 +276,45 @@ input:focus+.line {
 }
 
 /*设置*/
-.setting input {
-  font-size: 14px;
-  font-weight: 700;
-  border: none;
-  border-bottom: 1px solid rgba(0,0,0,.12);
-  padding: 8px 0 4px;
-  background: transparent;
-  outline: none;
-}
-.setting input:focus {
-  border-bottom: 1px solid #2196f3;
+.setting .row {
+  padding: 0;
 }
 .setting-item {
-  margin-right: 56px;
   margin-bottom: 24px;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-direction: column;
+  position: relative;
 }
 .setting-item .item-name {
   margin-right: 8px;
+  font-size: 12px;
+  color: rgba(0,0,0,.54)
 }
 .setting .group {
   margin-bottom: 56px;
-  display: flex;
-  flex-wrap: wrap;
+  margin-right: 40px;
+  flex: 1 0;
+  background: #fff;
+  border-radius: 2px;
+  padding: 24px;
+}
+.setting .group:last-child {
+  margin-right: 0;
+}
+.group h1 {
+  height: 64px;
 }
 .subheader {
   font-size: 14px;
   line-height: 48px;
-  color: rgba(0,0,0,.54)
+  color: rgba(0,0,0,.54);
+  flex: 1 0 100%;
 }
 .palette {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
+  width: 2em;
+  height: 1em;
+  border-radius: 2px;
+  position: absolute;
+  bottom: 4px;
+  right: 0;
 }
