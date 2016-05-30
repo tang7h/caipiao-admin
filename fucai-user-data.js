@@ -1,6 +1,7 @@
 var app = angular.module('caipiao-admin',[]);
-app.controller('appCtrl', function($scope){
-  $scope.userData = [
+app.controller('appCtrl', function($scope,$http){
+  // 测试数据
+  $scope.fucaiUsers = [
     {
       id: 1,
       username: "53010845",
@@ -53,16 +54,43 @@ app.controller('appCtrl', function($scope){
       Tell: "15887228008",
       info: "康佳自行",
       Add: "昆明市官渡区宝海路2号附2号",
-      shijian: "2015年9月15日"
+      shijian: "2015年9月16日"
     }
   ]
-  $scope.dataT = {};
+  $scope.settings = {
+    next: 600,
+    recommond: '1,2,3',
+    times: 20,
+    lianhao: '#84d1f4',
+    liankai: '#b7dbf2',
+    quandan: '#84d1f4',
+    quanshuang: '#84d1f4',
+    col_bg: '#FDFBE5,#F6F1E4'
+  }
+  // 获取数据
+  $scope.refreshData = function(){
+    // 福彩
+    $http.get('').then(function(data){
+      $scope.fucaiUsers = data;
+    })
+    // 体彩
+    $http.get('').then(function(data){
+      $scope.ticaiUsers = data;
+    })
+    // 配置
+    $http.get('').then(function(data){
+      $scope.settings = data;
+    })
+  }
+
+  $scope.dataT = {};//临时存储单条数据
   $scope.time = new Date();
+  // 编辑用户数据
   $scope.edit = function(data) {
     $scope.dataT = data;
-    console.log(data);
     $scope.bar.show();
   }
+  // 添加用户
   $scope.dialogue = {
     status: 'hide',
     show: function(){
@@ -95,18 +123,22 @@ app.controller('appCtrl', function($scope){
       }
     }
   }
-  $scope.editComplete = function(){
+
+  // 提交编辑后的用户数据
+  $scope.editComplete = function(url){
     $scope.bar.hide();
-    // 提交编辑后的数据
+    $http.post(url,dataT).then(refreshData());
   }
-  $scope.settingData = {
-    next: 600,
-    recommond: '1,2,3',
-    times: 20,
-    lianhao: '#84d1f4',
-    liankai: '#b7dbf2',
-    quandan: '#84d1f4',
-    quanshuang: '#84d1f4',
-    col_bg: '#FDFBE5,#F6F1E4'
+  // 提交配置数据
+  $scope.sendData = function(url,data){
+    $http.post(url,data).then(refreshData());
+  }
+  $scope.pages = '';
+  $scope.currentPage = 'fucai';
+  $scope.turnPage = function(name){
+    for(i in pages){
+      i.status = 'hide';
+    }
+    pages[name].status = 'show';
   }
 })
