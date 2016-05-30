@@ -132,7 +132,7 @@ svg {
 .cell.password { flex: 1 0 5em; }
 .cell.tel { flex: 1 0 7em;}
 .cell.device { flex: 1 0 4em;}
-.cell.addr { flex: 1 0 16em; }
+.cell.addr { flex: 2 0 16em; }
 .cell.time { flex: 1 0 7em;}
 .cell.edit { flex: 1 0 24px;}
 
