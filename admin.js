@@ -57,7 +57,17 @@ app.controller('appCtrl', function($scope,$http){
       shijian: "2015年9月16日"
     }
   ]
-  $scope.settings = {
+  $scope.settingsFucai = {
+    next: 600,
+    recommond: '1,2,3',
+    times: 20,
+    lianhao: '#84d1f4',
+    liankai: '#b7dbf2',
+    quandan: '#84d1f4',
+    quanshuang: '#84d1f4',
+    col_bg: '#FDFBE5,#F6F1E4'
+  }
+  $scope.settingsTicai = {
     next: 600,
     recommond: '1,2,3',
     times: 20,
@@ -70,10 +80,12 @@ app.controller('appCtrl', function($scope,$http){
   $scope.url = {
     getFucai : '',
     getTicai : '',
-    getSettings : '',
+    getSettingsFucai : '',
+    getSettingsTicai : '',
     editFucai : '',
     editTicai : '',
-    editSettings : '',
+    editSettingsFucai : '',
+    editSettingsTicai : '',
     newTicai : '',
     newFucai : ''
   }
