@@ -44,7 +44,7 @@ app.controller('appCtrl', function($scope,$http){
     $scope.dataT = data;
     $scope.bar.show();
   }
-  // 添加用户
+  // dialogue
   $scope.dialogue = {
     status: 'hide',
     show: function(){
@@ -78,14 +78,16 @@ app.controller('appCtrl', function($scope,$http){
     }
   }
 
-  // 提交编辑后的用户数据
+  // 提交数据
+  $scope.sendData = function(url,data){
+    console.log(url+'&data='+angular.toJson(data));
+    // $http.post(url,data).then($scope.refreshData());
+    $scope.toast.show('发送了数据')
+  }
+  // 完成编辑
   $scope.editComplete = function(url){
     $scope.bar.hide();
-    $http.post(url,$scope.dataT).then($scope.refreshData());
-  }
-  // 提交配置数据
-  $scope.sendData = function(url,data){
-    $http.post(url,data).then($scope.refreshData());
+    $scope.sendData(url,$scope.dataT);
   }
   // 添加用户
   $scope.type = '';
@@ -93,14 +95,24 @@ app.controller('appCtrl', function($scope,$http){
     $scope.dialogue.toggle();
     $scope.type = type;
   }
+  $scope.newUser = {
+    username:'',
+    passcode:'',
+    Tell:'',
+    info:'',
+    Add:'',
+    Time:''
+  }
+  // 发送新用户
   $scope.sendUser = function(type){
     if(type=='fucai'){
-      $scope.sendData($scope.url.fucaiUsers,$scope.newUser);
+      $scope.sendData($scope.url.editTicai,$scope.newUser);
     }else if(type=='ticai'){
-      $scope.sendData($scope.url.ticaiUsers,$scope.newUser);
+      $scope.sendData($scope.url.editFucai,$scope.newUser);
     }
     $scope.dialogue.toggle();
   }
+  // 页面切换
   $scope.pages = [
     { name: '福彩', status: true },
     { name: '体彩', status: false },
@@ -111,5 +123,14 @@ app.controller('appCtrl', function($scope,$http){
       $scope.pages[i].status = false;
     }
     $scope.pages[index].status = true;
+    $scope.toast.show('切换页面'+index);
+  }
+  $scope.toast = {
+    message : '提示信息',
+    status : '',
+    show : function(message){
+      this.message = message;
+      this.status = 'show';
+    }
   }
 })

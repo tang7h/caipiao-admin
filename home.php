@@ -88,13 +88,13 @@
         </div>
       </div>
       <div class="row data" ng-repeat="i in ticaiUsers | filter:search">
-        <div class="cell id">{{i.id}}</div>
-        <div class="cell username">{{i.username}}</div>
-        <div class="cell password">{{i.passcode}}</div>
-        <div class="cell tel">{{i.Tell}}</div>
-        <div class="cell device">{{i.info}}</div>
-        <div class="cell addr">{{i.Add}}</div>
-        <div class="cell time">{{i.Time}}</div>
+        <div class="cell id" title="{{i.id}}">{{i.id}}</div>
+        <div class="cell username" title="{{i.username}}">{{i.username}}</div>
+        <div class="cell password" title="{{i.passcode}}">{{i.passcode}}</div>
+        <div class="cell tel" title="{{i.Tell}}">{{i.Tell}}</div>
+        <div class="cell device" title="{{i.info}}">{{i.info}}</div>
+        <div class="cell addr" title="{{i.Add}}">{{i.Add}}</div>
+        <div class="cell time" title="{{i.Time}}">{{i.Time}}</div>
         <div class="cell edit">
           <svg ng-click="edit(i)" class="icon md-dark" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
         </div>
@@ -118,7 +118,7 @@
           <input type="text" ng-model="settingsFucai.times">
         </div>
         <div class="row footer">
-          <input type="button" class="btn btn-primary" value="更新" ng-click="sendData(url.editSettings,settingsFucai)">
+          <input type="button" class="btn btn-primary" value="更新" ng-click="sendData(url.editSettingsFucai,settingsFucai)">
         </div>
       </div>
 
@@ -168,7 +168,7 @@
           <input type="text" ng-model="settingsTicai.times">
         </div>
         <div class="row footer">
-          <input type="button" class="btn btn-primary" value="更新" ng-click="sendData(url.editSettings,settingsTicai)">
+          <input type="button" class="btn btn-primary" value="更新" ng-click="sendData(url.editSettingsTicai,settingsTicai)">
         </div>
       </div>
 
@@ -234,6 +234,10 @@
   <div class="nav-item-group">
     <a ng-click="turnPage(2)" href="#" class="nav-item">设置</a>
   </div>
+</div>
+
+<div class="toast {{toast.status}}">
+  {{toast.message}}
 </div>
 </body>
 </html>
