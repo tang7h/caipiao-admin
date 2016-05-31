@@ -1,5 +1,5 @@
 var app = angular.module('caipiao-admin',[]);
-app.controller('appCtrl', function($scope,$http){
+app.controller('appCtrl', function($scope,$http,$timeout){
 
   $scope.url = {
     getFucai : 'data.php?type=1',
@@ -21,9 +21,13 @@ app.controller('appCtrl', function($scope,$http){
     $http.get($scope.url.getTicai).then(function(response){
       $scope.ticaiUsers = response.data;
     })
-    $http.get($scope.url.getSettings).then(function(response){
-      $scope.settings = response.data;
+    $http.get($scope.url.getSettingsFucai).then(function(response){
+      $scope.settingsFucai = response.data[0];
     })
+    $http.get($scope.url.getSettingsTicai).then(function(response){
+      $scope.settingsTicai = response.data[0];
+    })
+    $scope.toast.show('数据已更新');
   }
   $http.get($scope.url.getFucai).then(function(response){
     $scope.fucaiUsers = response.data;
@@ -80,9 +84,9 @@ app.controller('appCtrl', function($scope,$http){
 
   // 提交数据
   $scope.sendData = function(url,data){
-    console.log(url+'&data='+angular.toJson(data));
-    // $http.post(url,data).then($scope.refreshData());
-    $scope.toast.show('发送了数据')
+    var splice = url+'&data='+angular.toJson(data);
+    console.log(splice);
+    $http.get(splice).then($scope.refreshData());
   }
   // 完成编辑
   $scope.editComplete = function(url){
@@ -123,14 +127,21 @@ app.controller('appCtrl', function($scope,$http){
       $scope.pages[i].status = false;
     }
     $scope.pages[index].status = true;
-    $scope.toast.show('切换页面'+index);
   }
   $scope.toast = {
     message : '提示信息',
     status : '',
     show : function(message){
       this.message = message;
-      this.status = 'show';
+      if(this.status=='show'){
+        $timeout.flush(5000);
+      }
+      else{
+        this.status = 'show';
+        $timeout(function(){
+          $scope.toast.status='';
+        },5000);
+      }
     }
   }
 })
