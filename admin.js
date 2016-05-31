@@ -67,18 +67,28 @@ app.controller('appCtrl', function($scope,$http){
     quanshuang: '#84d1f4',
     col_bg: '#FDFBE5,#F6F1E4'
   }
+  $scope.url = {
+    getFucai : '',
+    getTicai : '',
+    getSettings : '',
+    editFucai : '',
+    editTicai : '',
+    editSettings : '',
+    newTicai : '',
+    newFucai : ''
+  }
   // 获取数据
   $scope.refreshData = function(){
     // 福彩
-    $http.get('').then(function(data){
+    $http.get($scope.url.getFucai).then(function(data){
       $scope.fucaiUsers = data;
     })
     // 体彩
-    $http.get('').then(function(data){
+    $http.get($scope.url.getTicai).then(function(data){
       $scope.ticaiUsers = data;
     })
     // 配置
-    $http.get('').then(function(data){
+    $http.get($scope.url.getSettings).then(function(data){
       $scope.settings = data;
     })
   }
@@ -127,11 +137,25 @@ app.controller('appCtrl', function($scope,$http){
   // 提交编辑后的用户数据
   $scope.editComplete = function(url){
     $scope.bar.hide();
-    $http.post(url,dataT).then(refreshData());
+    $http.post(url,$scope.dataT).then($scope.refreshData());
   }
   // 提交配置数据
   $scope.sendData = function(url,data){
-    $http.post(url,data).then(refreshData());
+    $http.post(url,data).then($scope.refreshData());
+  }
+  // 添加用户
+  $scope.type = '';
+  $scope.addUser = function(type){
+    $scope.dialogue.toggle();
+    $scope.type = type;
+  }
+  $scope.sendUser = function(type){
+    if(type=='fucai'){
+      $scope.sendData($scope.url.fucaiUsers,$scope.newUser);
+    }else if(type=='ticai'){
+      $scope.sendData($scope.url.ticaiUsers,$scope.newUser);
+    }
+    $scope.dialogue.toggle();
   }
   $scope.pages = '';
   $scope.currentPage = 'fucai';
