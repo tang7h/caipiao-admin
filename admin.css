@@ -125,7 +125,7 @@ svg {
   justify-content: flex-start;
   align-items: center;
   white-space: nowrap;
-  margin-right: 56px;
+  margin-right: 40px;
   /*background: #eee;*/
   position: relative;
 }
@@ -136,10 +136,10 @@ svg {
 .cell.username { flex: 1 0 5em; }
 .cell.password { flex: 1 0 5em; }
 .cell.tel { flex: 1 0 7em;}
-.cell.device { flex: 1 0 4em;}
-.cell.addr { flex: 2 0 16em; }
-.cell.time { flex: 1 0 7em;}
-.cell.edit { flex: 1 0 24px;}
+.cell.device { flex: 2 0 26em; white-space: normal;}
+.cell.addr { flex: 2 0 17em; white-space: normal;}
+.cell.time { flex: 1 0 8em;}
+.cell.edit { flex: 1 0 36px;}
 
 .edit .icon { opacity: 0;}
 .row:hover .icon { opacity: 1;}

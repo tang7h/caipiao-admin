@@ -1,110 +1,42 @@
 var app = angular.module('caipiao-admin',[]);
 app.controller('appCtrl', function($scope,$http){
-  // 测试数据
-  $scope.fucaiUsers = [
-    {
-      id: 1,
-      username: "53010845",
-      passcode: "88745496",
-      Tell: "15887228008",
-      info: "康佳k55",
-      Add: "昆明市盘龙区金州湾米兰宾馆",
-      shijian: "2015年9月15日"
-    },
-    {
-      id: 2,
-      username: "53011693",
-      passcode: "88011769",
-      Tell: "15887228008",
-      info: "康佳k55",
-      Add: "昆明市官渡区子君村经济适用房昆明市官渡区子君村经济适用房",
-      shijian: "2015年9月15日"
-    },
-    {
-      id: 3,
-      username: "53010613",
-      passcode: "740809",
-      Tell: "15887228008",
-      info: "康佳k55",
-      Add: "昆明市华龙人家1号门",
-      shijian: "2015年9月15日"
-    },
-    {
-      id: 4,
-      username: "53010187",
-      passcode: "10187",
-      Tell: "15887228008",
-      info: "康佳k55",
-      Add: "昆明市盘龙区田园路101号",
-      shijian: "2015年9月15日"
-    },
-    {
-      id: 5,
-      username: "53010499",
-      passcode: "88361790",
-      Tell: "15887228008",
-      info: "康佳k55",
-      Add: "昆明市斗南花卉老市场B区",
-      shijian: "2015年9月15日"
-    },
-    {
-      id: 6,
-      username: "53010453",
-      passcode: "888999",
-      Tell: "15887228008",
-      info: "康佳自行",
-      Add: "昆明市官渡区宝海路2号附2号",
-      shijian: "2015年9月16日"
-    }
-  ]
-  $scope.settingsFucai = {
-    next: 600,
-    recommond: '1,2,3',
-    times: 20,
-    lianhao: '#84d1f4',
-    liankai: '#b7dbf2',
-    quandan: '#84d1f4',
-    quanshuang: '#84d1f4',
-    col_bg: '#FDFBE5,#F6F1E4'
-  }
-  $scope.settingsTicai = {
-    next: 600,
-    recommond: '1,2,3',
-    times: 20,
-    lianhao: '#84d1f4',
-    liankai: '#b7dbf2',
-    quandan: '#84d1f4',
-    quanshuang: '#84d1f4',
-    col_bg: '#FDFBE5,#F6F1E4'
-  }
+
   $scope.url = {
-    getFucai : '',
-    getTicai : '',
-    getSettingsFucai : '',
-    getSettingsTicai : '',
-    editFucai : '',
-    editTicai : '',
-    editSettingsFucai : '',
-    editSettingsTicai : '',
+    getFucai : 'data.php?type=1',
+    getTicai : 'data.php?type=0',
+    getSettingsFucai : 'data.php?type=2',
+    getSettingsTicai : 'data.php?type=3',
+    editFucai : 'update.php?type=1',
+    editTicai : 'update.php?type=0',
+    editSettingsFucai : 'update.php?type=2',
+    editSettingsTicai : 'update.php?type=3',
     newTicai : '',
     newFucai : ''
   }
   // 获取数据
   $scope.refreshData = function(){
-    // 福彩
-    $http.get($scope.url.getFucai).then(function(data){
-      $scope.fucaiUsers = data;
+    $http.get($scope.url.getFucai).then(function(response){
+      $scope.fucaiUsers = response.data;
     })
-    // 体彩
-    $http.get($scope.url.getTicai).then(function(data){
-      $scope.ticaiUsers = data;
+    $http.get($scope.url.getTicai).then(function(response){
+      $scope.ticaiUsers = response.data;
     })
-    // 配置
-    $http.get($scope.url.getSettings).then(function(data){
-      $scope.settings = data;
+    $http.get($scope.url.getSettings).then(function(response){
+      $scope.settings = response.data;
     })
   }
-
+  $http.get($scope.url.getFucai).then(function(response){
+    $scope.fucaiUsers = response.data;
+  })
+  $http.get($scope.url.getTicai).then(function(response){
+    $scope.ticaiUsers = response.data;
+  })
+  $http.get($scope.url.getSettingsFucai).then(function(response){
+    $scope.settingsFucai = response.data[0];
+  })
+  $http.get($scope.url.getSettingsTicai).then(function(response){
+    $scope.settingsTicai = response.data[0];
+  })
   $scope.dataT = {};//临时存储单条数据
   $scope.time = new Date();
   // 编辑用户数据
