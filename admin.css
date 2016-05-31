@@ -123,6 +123,7 @@ svg {
   white-space: nowrap;
   margin-right: 56px;
   /*background: #eee;*/
+  position: relative;
 }
 .cell:last-child {
   margin-right: 0;
@@ -139,9 +140,16 @@ svg {
 .edit .icon { opacity: 0;}
 .row:hover .icon { opacity: 1;}
 
-
 input.cell {
   border: none;
+}
+
+.tooltip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: tomato;
+  opacity: .5;
 }
 /*编辑数据*/
 .bar {

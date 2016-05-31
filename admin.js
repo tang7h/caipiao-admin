@@ -17,7 +17,7 @@ app.controller('appCtrl', function($scope,$http){
       passcode: "88011769",
       Tell: "15887228008",
       info: "康佳k55",
-      Add: "昆明市官渡区子君村经济适用房",
+      Add: "昆明市官渡区子君村经济适用房昆明市官渡区子君村经济适用房",
       shijian: "2015年9月15日"
     },
     {
@@ -157,12 +157,15 @@ app.controller('appCtrl', function($scope,$http){
     }
     $scope.dialogue.toggle();
   }
-  $scope.pages = '';
-  $scope.currentPage = 'fucai';
-  $scope.turnPage = function(name){
-    for(i in pages){
-      i.status = 'hide';
+  $scope.pages = [
+    { name: '福彩', status: true },
+    { name: '体彩', status: false },
+    { name: '设置', status: false }
+  ]
+  $scope.turnPage = function(index){
+    for(i in $scope.pages){
+      $scope.pages[i].status = false;
     }
-    pages[name].status = 'show';
+    $scope.pages[index].status = true;
   }
 })
