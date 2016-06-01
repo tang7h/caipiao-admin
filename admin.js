@@ -10,8 +10,8 @@ app.controller('appCtrl', function($scope,$http,$timeout){
     editTicai : 'update.php?type=0',
     editSettingsFucai : 'update.php?type=2',
     editSettingsTicai : 'update.php?type=3',
-    newTicai : '',
-    newFucai : ''
+    newTicai : 'update.php?type=fucai',
+    newFucai : 'update.php?type=ticai'
   }
   // 获取数据
   $scope.refreshData = function(){
@@ -84,9 +84,9 @@ app.controller('appCtrl', function($scope,$http,$timeout){
 
   // 提交数据
   $scope.sendData = function(url,data){
-    var splice = url+'&data='+angular.toJson(data);
-    console.log(splice);
-    $http.get(splice).then($scope.refreshData());
+    delete data['$$hashKey'];
+    console.log('地址：'+url+'，数据：'+JSON.stringify(data));
+    $http.get(url+'&data='+JSON.stringify(data)).then($scope.refreshData());
   }
   // 完成编辑
   $scope.editComplete = function(url){
@@ -110,9 +110,9 @@ app.controller('appCtrl', function($scope,$http,$timeout){
   // 发送新用户
   $scope.sendUser = function(type){
     if(type=='fucai'){
-      $scope.sendData($scope.url.editTicai,$scope.newUser);
+      $scope.sendData($scope.url.newTicai,$scope.newUser);
     }else if(type=='ticai'){
-      $scope.sendData($scope.url.editFucai,$scope.newUser);
+      $scope.sendData($scope.url.newFucai,$scope.newUser);
     }
     $scope.dialogue.toggle();
   }
