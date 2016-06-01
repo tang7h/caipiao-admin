@@ -78,7 +78,7 @@ svg {
   position: fixed;
   bottom: 0;
   right: 0;
-  margin: 40px;
+  margin: 24px;
   z-index: 6;
   display: flex;
   justify-content: center;
@@ -380,17 +380,18 @@ input:focus+.line {
   padding: 0 24px;
   background: #323232;
   position: fixed;
-  bottom: -50px;
-  left: 300px;
+  bottom: 0;
+  left: 0;
+  margin: 24px;
+  transform: translateY(72px);
 }
 .toast.show {
   animation: toast-show 5s;
 }
 @keyframes toast-show {
   5%,95% {
-    transform: translateY(-60px);
+    transform: translateY(0);
   }
   100% {
-    transform: translateY(0);
   }
 }
