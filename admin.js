@@ -11,7 +11,9 @@ app.controller('appCtrl', function($scope,$http,$timeout){
     editSettingsFucai : 'update.php?type=2',
     editSettingsTicai : 'update.php?type=3',
     newTicai : 'update.php?type=4',
-    newFucai : 'update.php?type=5'
+    newFucai : 'update.php?type=5',
+    deleteTicai : 'update.php?type=8',
+    deleteFucai : 'update.php?type=7'
   }
   // 获取数据
   $scope.refreshData = function(){
@@ -47,6 +49,18 @@ app.controller('appCtrl', function($scope,$http,$timeout){
   $scope.edit = function(data) {
     $scope.dataT = data;
     $scope.bar.show();
+  }
+  // 删除用户
+  $scope.delete = function(item,type){
+    $scope.confirm.show('确认删除？',type,item);
+  }
+  $scope.deleteSend = function(type,item){
+    var id = parseInt(item.id);
+    if(type=='fucai'){
+      $scope.sendData($scope.url.deleteFucai,id);
+    }else if(type=='ticai'){
+      $scope.sendData($scope.url.deleteTicai,id);
+    }
   }
   // dialogue
   $scope.dialogue = {
@@ -142,6 +156,32 @@ app.controller('appCtrl', function($scope,$http,$timeout){
           $scope.toast.status='';
         },5000);
       }
+    }
+  }
+  $scope.confirm = {
+    message : '',
+    status : 'hide',
+    data: '',
+    item: '',
+    content: '',
+    show : function(message,type,item){
+      this.message = message;
+      this.type = type;
+      this.item = item;
+      this.parse();
+      this.status = 'show';
+    },
+    hide : function(){
+      this.status = 'hide';
+    },
+    parse : function(){
+      var t = [];
+      // for(i in this.item){
+      //   t.push(this.item[i]);
+      // }
+      t.push("ID "+this.item.id);
+      t.push("用户 "+this.item.username);
+      this.content = t.join('，');
     }
   }
 })

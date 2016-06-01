@@ -62,6 +62,9 @@ svg {
   color: #fff;
   font-weight: 500;
 }
+.btn.dangerious {
+  color: #F44336;
+}
 .icon {
   color: rgba(0,0,0,.54);
   color: #2196F3;
@@ -77,7 +80,7 @@ svg {
 }
 .page {
   margin: 56px;
-  min-width: 1100px;
+  min-width: 1200px;
   border-radius: 2px;
 }
 .page.table {
@@ -140,9 +143,11 @@ svg {
 .cell.device { flex: 2 0 20em; white-space: normal;}
 .cell.addr { flex: 2 0 17em; white-space: normal;}
 .cell.time { flex: 1 0 8em;}
-.cell.edit { flex: 1 0 36px;}
+.cell.edit { flex: 1 0 56px;}
 
 .edit .icon { opacity: 0;}
+.row .icon { margin-right: 16px; }
+.row .icon:last-child { margin-right: 0; }
 .row:hover .icon { opacity: 1;}
 
 input.cell {
