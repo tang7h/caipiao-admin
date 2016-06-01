@@ -10,8 +10,8 @@ app.controller('appCtrl', function($scope,$http,$timeout){
     editTicai : 'update.php?type=0',
     editSettingsFucai : 'update.php?type=2',
     editSettingsTicai : 'update.php?type=3',
-    newTicai : 'update.php?type=fucai',
-    newFucai : 'update.php?type=ticai'
+    newTicai : 'update.php?type=4',
+    newFucai : 'update.php?type=5'
   }
   // 获取数据
   $scope.refreshData = function(){

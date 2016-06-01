@@ -14,7 +14,7 @@
         <h1>福彩用户</h1>
         <div class="tools">
           <svg class="icon" ng-click="addUser('fucai')" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-          <input type="text" ng-model="search" placeholder="搜索">
+          <input type="search" ng-model="search" placeholder="搜索">
         </div>
       </div>
       <div class="row">
@@ -227,13 +227,7 @@
 
 
 <div class="side-nav">
-  <div class="nav-item-group">
-    <a ng-click="turnPage(0)" href="#" class="nav-item active">福彩</a>
-    <a ng-click="turnPage(1)" href="#" class="nav-item">体彩</a>
-  </div>
-  <div class="nav-item-group">
-    <a ng-click="turnPage(2)" href="#" class="nav-item">设置</a>
-  </div>
+  <a ng-repeat="i in pages" ng-click="turnPage($index)" class="nav-item {{i.status}}">{{i.name}}</a>
 </div>
 
 <div class="toast {{toast.status}}">
