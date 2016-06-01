@@ -24,6 +24,7 @@ input {
   padding: 4px 0 4px;
   background: transparent;
   outline: none;
+  color: inherit;
 }
 input:focus {
   border-bottom: 2px solid #2196f3;
@@ -39,6 +40,9 @@ svg {
 }
 .card {
   box-shadow: 0 2px 8px rgba(0,0,0,.12), 0 4px 16px rgba(0,0,0,.12);
+}
+button {
+  font-family: inherit;
 }
 .btn {
   border: none;
@@ -295,11 +299,21 @@ input:focus+.line {
 }
 
 /*导航*/
-.side-nav {
+.page-header {
   background: #333;
   color: #fff;
-  border-right: 1px solid rgba(0,0,0,.12);
-  flex: none;
+  height: 48px;
+}
+.page-header .inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 56px;
+}
+.page-header input {
+  border-color: #fff;
+}
+.nav {
   display: flex;
 }
 .nav-item-group {
@@ -315,12 +329,14 @@ input:focus+.line {
   align-items: center;
   font-size: 16px;
   cursor: pointer;
+  opacity: .8
 }
 .nav-item:hover {
   background: rgba(255,255,255,.05);
 }
 .nav-item.true {
-  background: rgba(255,255,255,.38);
+  opacity: 1;
+  border-bottom: 2px solid #2196f3;
 }
 
 /*设置*/
