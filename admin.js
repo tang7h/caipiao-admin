@@ -46,8 +46,11 @@ app.controller('appCtrl', function($scope,$http,$timeout){
   $scope.dataT = {};//临时存储单条数据
   $scope.time = new Date();
   // 编辑用户数据
-  $scope.edit = function(data) {
+  $scope.position = 0;
+  $scope.edit = function(data,index) {
     $scope.dataT = data;
+    console.log(index);
+    $scope.position = (index+1) * 48;
     $scope.bar.show();
   }
   // 删除用户
