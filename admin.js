@@ -46,24 +46,29 @@ app.controller('appCtrl', function($scope,$http,$timeout){
   $scope.dataT = {};//临时存储单条数据
   $scope.time = new Date();
   // 编辑用户数据
-  $scope.position = 0;
   $scope.edit = function(data,index) {
     $scope.dataT = data;
-    console.log(index);
-    $scope.position = (index+1) * 48;
-    $scope.bar.show();
+    $scope.bar.show('edit',data,index);
   }
   // 删除用户
-  $scope.delete = function(item,type){
-    $scope.confirm.show('确认删除？',type,item);
+  $scope.deleteT = {
+    item: {},
+    type: ''
+  }
+  $scope.delete = function(item,type,index){
+    $scope.dataT = item;
+    $scope.deleteT.item = item;
+    $scope.deleteT.type = type;
+    $scope.bar.show('delete',item,index);
   }
   $scope.deleteSend = function(type,item){
-    var id = parseInt(item.id);
-    if(type=='fucai'){
+    var id = parseInt($scope.deleteT.item.id);
+    if($scope.deleteT.type=='fucai'){
       $scope.sendData($scope.url.deleteFucai,id);
-    }else if(type=='ticai'){
+    }else if($scope.deleteT.type=='ticai'){
       $scope.sendData($scope.url.deleteTicai,id);
     }
+    $scope.bar.hide();
   }
   // dialogue
   $scope.dialogue = {
@@ -84,7 +89,11 @@ app.controller('appCtrl', function($scope,$http,$timeout){
   }
   $scope.bar = {
     status: 'hide',
-    show: function(){
+    mode: 'edit',
+    position: 0,
+    show: function(mode,data,index){
+      this.mode = mode;
+      this.position = (index+1) * 48;
       this.status = 'show';
     },
     hide: function(){
@@ -103,7 +112,9 @@ app.controller('appCtrl', function($scope,$http,$timeout){
   $scope.sendData = function(url,data){
     delete data['$$hashKey'];
     console.log('地址：'+url+'，数据：'+JSON.stringify(data));
-    $http.get(url+'&data='+JSON.stringify(data)).then($scope.refreshData());
+    $http.get(url+'&data='+JSON.stringify(data)).then($timeout(function(){
+      $scope.refreshData()
+    },500));
   }
   // 完成编辑
   $scope.editComplete = function(url){

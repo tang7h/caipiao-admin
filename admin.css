@@ -66,8 +66,8 @@ button {
   color: #fff;
   font-weight: 500;
 }
-.btn.dangerious {
-  color: #F44336;
+.dangerious {
+  color: #F44336!important;
 }
 .icon {
   color: rgba(0,0,0,.54);
@@ -400,6 +400,7 @@ input:focus+.line {
   left: 0;
   margin: 24px;
   transform: translateY(72px);
+  z-index: 6;
 }
 .toast.show {
   animation: toast-show 5s;
