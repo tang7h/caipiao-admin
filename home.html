@@ -29,7 +29,7 @@
         <div class="cell edit"></div>
       </div>
       <!-- 编辑条 -->
-      <div class="row data bar {{bar.status}}" style="top: {{bar.position}}px">
+      <div class="row data bar {{bar.status}} {{bar.mode}}" style="top: {{bar.position}}px">
         <div class="cell id"> {{dataT.id}} </div>
         <div class="cell username"> <input type="text" ng-model="dataT.username"> </div>
         <div class="cell password"> <input type="text" ng-model="dataT.passcode"> </div>
@@ -79,7 +79,7 @@
         <div class="cell edit"></div>
       </div>
       <!-- 编辑条 -->
-      <div class="row data bar {{bar.status}}" style="top: {{bar.position}}px">
+      <div class="row data bar {{bar.status}} {{bar.mode}}" style="top: {{bar.position}}px">
         <div class="cell id"> {{dataT.id}} </div>
         <div class="cell username"> <input type="text" ng-model="dataT.username"> </div>
         <div class="cell password"> <input type="text" ng-model="dataT.passcode"> </div>
