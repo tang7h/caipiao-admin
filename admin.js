@@ -144,6 +144,26 @@ app.controller('appCtrl', function($scope,$http,$timeout){
     }
     $scope.dialogue.toggle();
   }
+  // 更新设置
+  $scope.updateSettings = function(type) {
+    settingsT = {
+      id: '',
+      recommond: '',
+      times: ''
+    }
+    if(type=="fucai"){
+      settingsT.id = $scope.settingsFucai.id;
+      settingsT.recommond = $scope.settingsFucai.recommond;
+      settingsT.times = $scope.settingsFucai.times;
+      $scope.sendData($scope.url.editSettingsFucai,settingsT);
+    }
+    if(type=="ticai"){
+      settingsT.id = $scope.settingsTicai.id;
+      settingsT.recommond = $scope.settingsTicai.recommond;
+      settingsT.times = $scope.settingsTicai.times;
+      $scope.sendData($scope.url.editSettingsTicai,settingsT);
+    }
+  }
   // 页面切换
   $scope.pages = [
     { name: '福彩', status: true },

@@ -114,10 +114,6 @@
       <div class="group">
         <h1>福彩设置</h1>
         <div class="setting-item">
-          <div class="item-name">开奖倒计时</div>
-          <input type="text" ng-model="settingsFucai.next">
-        </div>
-        <div class="setting-item">
           <div class="item-name">推介号</div>
           <input type="text" ng-model="settingsFucai.recommond">
         </div>
@@ -126,7 +122,7 @@
           <input type="text" ng-model="settingsFucai.times">
         </div>
         <div class="row footer">
-          <input type="button" class="btn btn-primary" value="更新" ng-click="sendData(url.editSettingsFucai,settingsFucai)">
+          <input type="button" class="btn btn-primary" value="更新" ng-click="updateSettings('fucai')">
         </div>
       </div>
 
@@ -157,16 +153,12 @@
           <input type="text" ng-model="settingsFucai.col_bg">
           <div class="palette" style="background:{{settingsFucai.col_bg}}"></div>
         </div>
-        <div class="row footer">
+        <!-- <div class="row footer">
           <input type="button" class="btn btn-primary" value="更新" ng-click="sendData(url.editSettingsFucai,settingsFucai)">
-        </div>
+        </div> -->
       </div>
       <div class="group">
         <h1>体彩设置</h1>
-        <div class="setting-item">
-          <div class="item-name">开奖倒计时</div>
-          <input type="text" ng-model="settingsTicai.next">
-        </div>
         <div class="setting-item">
           <div class="item-name">推介号</div>
           <input type="text" ng-model="settingsTicai.recommond">
@@ -176,7 +168,7 @@
           <input type="text" ng-model="settingsTicai.times">
         </div>
         <div class="row footer">
-          <input type="button" class="btn btn-primary" value="更新" ng-click="sendData(url.editSettingsTicai,settingsTicai)">
+          <input type="button" class="btn btn-primary" value="更新" ng-click="updateSettings('ticai')">
         </div>
       </div>
 
@@ -207,9 +199,9 @@
           <input type="text" ng-model="settingsTicai.col_bg">
           <div class="palette" style="background:{{settingsTicai.col_bg}}"></div>
         </div>
-        <div class="row footer">
+        <!-- <div class="row footer">
           <input type="button" class="btn btn-primary" value="更新" ng-click="sendData(url.editSettingsTicai,settingsTicai)">
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
