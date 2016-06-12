@@ -7,6 +7,7 @@ body {
   background: #eee;
   color: rgba(0,0,0,.87);
   font-family: "microsoft yahei";
+  display: -webkit-flex;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -33,6 +34,7 @@ input:focus {
 h1 {
   font-size: 20px;
   font-weight: 500;
+  -webkit-flex: 1 1 100%;
   flex: 1 1 100%;
 }
 svg {
@@ -85,6 +87,7 @@ button {
   right: 0;
   margin: 24px;
   z-index: 6;
+  display: -webkit-flex;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,10 +104,12 @@ button {
 .md-dark { color: rgba(0, 0, 0, 0.54); }
 .md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
 .stage {
+  -webkit-flex: 1 1 auto;
   flex: 1 1 auto;
   order: 1;
   height: 100%;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .page {
   margin: 56px;
@@ -116,11 +121,14 @@ button {
   background: #fff;
 }
 .page.setting {
+  display: -webkit-flex;
   display: flex;
   align-items: flex-start;
 }
 .row {
+  -webkit-flex: 1 0 100%;
   flex: 1 0 100%;
+  display: -webkit-flex;
   display: flex;
   align-items: center;
   padding: 0 24px;
@@ -140,6 +148,7 @@ button {
 }
 .row.footer {
   height: 56px;
+  display: -webkit-flex;
   display: flex;
   justify-content: flex-end;
 }
@@ -151,8 +160,10 @@ button {
 .cell {
   font-size: 13px;
   cursor: default;
+  -webkit-flex: 2 0;
   flex: 2 0;
   overflow: hidden;
+  display: -webkit-flex;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -165,13 +176,21 @@ button {
 .cell:last-child {
   margin-right: 0;
 }
+.cell.id { -webkit-flex: 1 0 2em; }
 .cell.id { flex: 1 0 2em; }
+.cell.username { -webkit-flex: 1 0 5em; }
 .cell.username { flex: 1 0 5em; }
+.cell.password { -webkit-flex: 1 0 5em; }
 .cell.password { flex: 1 0 5em; }
+.cell.tel { -webkit-flex: 1 0 7em;}
 .cell.tel { flex: 1 0 7em;}
+.cell.device { -webkit-flex: 2 0 20em; white-space: normal;}
 .cell.device { flex: 2 0 20em; white-space: normal;}
+.cell.addr { -webkit-flex: 2 0 17em; white-space: normal;}
 .cell.addr { flex: 2 0 17em; white-space: normal;}
+.cell.time { -webkit-flex: 1 0 8em;}
 .cell.time { flex: 1 0 8em;}
+.cell.edit { -webkit-flex: 1 0 56px;}
 .cell.edit { flex: 1 0 56px;}
 
 .edit .icon { opacity: 0;}
@@ -206,6 +225,7 @@ input.cell {
   box-shadow: 0 0px 30px rgba(0,0,0,0);
 }
 .bar input {
+  -webkit-flex: 1 0 100%;
   flex: 1 0 100%;
   font-size: 13px;
 }
@@ -216,6 +236,7 @@ input.cell {
 
 /*工具栏*/
 .tools {
+  display: -webkit-flex;
   display: flex;
   align-items: center;
   color: rgba(0, 0, 0, 0.54);
@@ -260,6 +281,7 @@ input:focus+.line {
   position: fixed;
   top: 0;
   left: 0;
+  display: -webkit-flex;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -295,6 +317,7 @@ input:focus+.line {
   margin: 24px;
 }
 .dialogue .action {
+  display: -webkit-flex;
   display: flex;
   justify-content: flex-end;
 }
@@ -306,6 +329,7 @@ input:focus+.line {
   height: 48px;
 }
 .page-header .inner {
+  display: -webkit-flex;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -315,17 +339,20 @@ input:focus+.line {
   border-color: #fff;
 }
 .nav {
+  display: -webkit-flex;
   display: flex;
 }
 .nav-item-group {
   padding: 8px 0;
   border-top: 1px solid rgba(0,0,0,.12);
   margin-top: -1px;
+  display: -webkit-flex;
   display: flex;
 }
 .nav-item {
   height: 48px;
   padding: 0 16px;
+  display: -webkit-flex;
   display: flex;
   align-items: center;
   font-size: 16px;
@@ -346,6 +373,7 @@ input:focus+.line {
 }
 .setting-item {
   margin-bottom: 24px;
+  display: -webkit-flex;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -358,6 +386,7 @@ input:focus+.line {
 .setting .group {
   margin-bottom: 56px;
   margin-right: 40px;
+  -webkit-flex: 1 0;
   flex: 1 0;
   background: #fff;
   border-radius: 2px;
@@ -373,6 +402,7 @@ input:focus+.line {
   font-size: 14px;
   line-height: 48px;
   color: rgba(0,0,0,.54);
+  -webkit-flex: 1 0 100%;
   flex: 1 0 100%;
 }
 .palette {
@@ -389,6 +419,7 @@ input:focus+.line {
   height: 48px;
   min-width: 288px;
   max-width: 568px;
+  display: -webkit-flex;
   display: flex;
   border-radius: 2px;
   font-size: 14px;
