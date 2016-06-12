@@ -175,7 +175,9 @@ app.controller('appCtrl', function($scope,$http,$timeout){
       $scope.pages[i].status = false;
     }
     $scope.pages[index].status = true;
+    $scope.currentPage = index;
   }
+  $scope.currentPage = 0;
   $scope.toast = {
     message : '提示信息',
     status : '',
