@@ -44,7 +44,7 @@
 
         </div>
       </div>
-      <div class="row data" ng-repeat="i in fucaiUsers | filter:searchFucai as filteredFucai track by i.id">
+      <div class="row data" ng-repeat="i in fucaiUsers | orderBy:$index:true | filter:searchFucai as filteredFucai track by i.id">
         <div class="cell id" title="{{i.id}}"> {{i.id}} </div>
         <div class="cell username" title="{{i.username}}"> {{i.username}} </div>
         <div class="cell password" title="{{i.passcode}}"> {{i.passcode}} </div>
@@ -94,7 +94,7 @@
 
         </div>
       </div>
-      <div class="row data" ng-repeat="i in ticaiUsers | filter:searchTicai as filteredTicai track by i.id">
+      <div class="row data" ng-repeat="i in ticaiUsers | orderBy:$index:true | filter:searchTicai as filteredTicai track by i.id">
         <div class="cell id" title="{{i.id}}">{{i.id}}</div>
         <div class="cell username" title="{{i.username}}">{{i.username}}</div>
         <div class="cell password" title="{{i.passcode}}">{{i.passcode}}</div>
