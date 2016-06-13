@@ -209,21 +209,13 @@ button {
 .cell:last-child {
   margin-right: 0;
 }
-.cell.id { -webkit-flex: 1 0 2em; }
 .cell.id { -webkit-box-flex: 1; -ms-flex: 1 0 2em; flex: 1 0 2em; }
-.cell.username { -webkit-flex: 1 0 5em; }
 .cell.username { -webkit-box-flex: 1; -ms-flex: 1 0 5em; flex: 1 0 5em; }
-.cell.password { -webkit-flex: 1 0 5em; }
-.cell.password { -webkit-box-flex: 1; -ms-flex: 1 0 5em; flex: 1 0 5em; }
-.cell.tel { -webkit-flex: 1 0 7em;}
+.cell.password { -webkit-box-flex: 1; -ms-flex: 1 0 4em; flex: 1 0 4em; }
 .cell.tel { -webkit-box-flex: 1; -ms-flex: 1 0 7em; flex: 1 0 7em;}
-.cell.device { -webkit-flex: 2 0 20em; white-space: normal;}
 .cell.device { -webkit-box-flex: 2; -ms-flex: 2 0 20em; flex: 2 0 20em; white-space: normal;}
-.cell.addr { -webkit-flex: 2 0 17em; white-space: normal;}
 .cell.addr { -webkit-box-flex: 2; -ms-flex: 2 0 17em; flex: 2 0 17em; white-space: normal;}
-.cell.time { -webkit-flex: 1 0 8em;}
 .cell.time { -webkit-box-flex: 1; -ms-flex: 1 0 8em; flex: 1 0 8em;}
-.cell.edit { -webkit-flex: 1 0 56px;}
 .cell.edit { -webkit-box-flex: 1; -ms-flex: 1 0 56px; flex: 1 0 56px;}
 
 .edit .icon { opacity: 0;}
