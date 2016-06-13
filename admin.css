@@ -9,6 +9,7 @@ body {
   font-family: "microsoft yahei";
   display: -webkit-flex;
   display: flex;
+  -webkit-flex-direction: column;
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
@@ -177,22 +178,40 @@ button {
   margin-right: 0;
 }
 
-.cell.id { -webkit-flex: 1 0 2em; }
-.cell.id { flex: 1 0 2em; }
-.cell.username { -webkit-flex: 1 0 5em; }
-.cell.username { flex: 1 0 5em; }
-.cell.password { -webkit-flex: 1 0 5em; }
-.cell.password { flex: 1 0 5em; }
-.cell.tel { -webkit-flex: 1 0 7em;}
-.cell.tel { flex: 1 0 7em;}
-.cell.device { -webkit-flex: 2 0 20em; white-space: normal;}
-.cell.device { flex: 2 0 20em; white-space: normal;}
-.cell.addr { -webkit-flex: 2 0 17em; white-space: normal;}
-.cell.addr { flex: 2 0 17em; white-space: normal;}
-.cell.time { -webkit-flex: 1 0 8em;}
-.cell.time { flex: 1 0 8em;}
-.cell.edit { -webkit-flex: 1 0 56px;}
-.cell.edit { flex: 1 0 56px;}
+.cell.id {
+  -webkit-flex: 1 0 2em;
+  flex: 1 0 2em;
+}
+.cell.username {
+  -webkit-flex: 1 0 5em;
+  flex: 1 0 5em;
+}
+.cell.password {
+  -webkit-flex: 1 0 4em;
+  flex: 1 0 4em;
+}
+.cell.tel {
+  -webkit-flex: 1 0 7em;
+  flex: 1 0 7em;
+}
+.cell.device {
+  -webkit-flex: 2 0 20em;
+  flex: 2 0 20em;
+  white-space: normal;
+}
+.cell.addr {
+  -webkit-flex: 2 0 17em;
+  flex: 2 0 17em;
+  white-space: normal;
+}
+.cell.time {
+  -webkit-flex: 1 0 8em;
+  flex: 1 0 8em;
+}
+.cell.edit {
+  -webkit-flex: 1 0 56px;
+  flex: 1 0 56px;
+}
 
 .edit .icon { opacity: 0;}
 .row .icon { margin-right: 16px; }
